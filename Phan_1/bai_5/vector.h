@@ -1,8 +1,7 @@
 class Vector {
-private:
-    float *v;
-    int n;
 public:
+    int n;
+    float *v;
     ~Vector() {}
 
     // hàm thiết lập không tham số
