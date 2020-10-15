@@ -1,7 +1,6 @@
 #include<iostream>
 #include<string>
 #include<iomanip>
-#include<Windows.h>
 using namespace std;
 
 class Time {
@@ -43,19 +42,18 @@ public:
             cout << setfill('0') << setw(2) << minutes << ":";
             cout << setfill('0') << setw(2) << seconds << t << endl;
         } else
-    }       cout << "Dinh dang thoi gian khong dung!" << endl;
-
+           cout << "Dinh dang thoi gian khong dung!" << endl;
+    }
     // hàm tăng giây
     void increaseSeconds(int s) {
-        int new_minutes = minutes;
-        int new_hour = hour;
-
-        new_minutes += (seconds+s)/60;
-        new_hour += (minutes+new_minutes)/60;
-
+        int 
+            new_seconds = (seconds+s)%60,
+            new_minutes = (minutes+(seconds+s)/60)%60,
+            new_hour = (hour+(minutes+(seconds+s)/60)/60)%24;
+        
         hour = new_hour;
-        minutes = new_minutes%60;
-        seconds = (seconds+s)%60;
+        minutes = new_minutes;
+        seconds = new_seconds;
     }
 };
 
@@ -66,18 +64,16 @@ int main() {
     T.view24h();
     T.view12h();
 
-    T.increaseSeconds(61);
+    T.increaseSeconds(2);
     T.view24h();
     T.view12h();
 
     // chức năng test thời gian
-    int i = 0;
-    while(true) {
-        Sleep(5);
-        system("CLS");
-        T.increaseSeconds(i++);
-        T.view12h();
+    for (int i=0;i<100000;++i) {
+        cout<<i<<":\n";
+        T.increaseSeconds(1);
         T.view24h();
+        T.view12h();
     }
 
     return 0;
