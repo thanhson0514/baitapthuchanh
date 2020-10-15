@@ -27,18 +27,23 @@ public:
 
     // hàm in giờ phút giây dạng 24h
     void view24h() {
-        cout << "time: " << setfill('0') << setw(2) << (hour%24) << ":";
-        cout << setfill('0') << setw(2) << minutes << ":";
-        cout << setfill('0') << setw(2) << seconds << endl;
+        if (isTime()) {
+            cout << "time: " << setfill('0') << setw(2) << (hour%24) << ":";
+            cout << setfill('0') << setw(2) << minutes << ":";
+            cout << setfill('0') << setw(2) << seconds << endl;
+        } else
+            cout << "Dinh dang thoi gian khong dung!" << endl;
     }
 
     // hàm in giờ phút giây dạng 12h
     void view12h() {
-        string t = (hour%24) > 12 ? "PM":"AM";
-        cout << "time: " << setfill('0') << setw(2) << (hour%12) << ":";
-        cout << setfill('0') << setw(2) << minutes << ":";
-        cout << setfill('0') << setw(2) << seconds << t << endl;
-    }
+        if (isTime()) {
+            string t = (hour%24) > 12 ? "PM":"AM";
+            cout << "time: " << setfill('0') << setw(2) << (hour%12) << ":";
+            cout << setfill('0') << setw(2) << minutes << ":";
+            cout << setfill('0') << setw(2) << seconds << t << endl;
+        } else
+    }       cout << "Dinh dang thoi gian khong dung!" << endl;
 
     // hàm tăng giây
     void increaseSeconds(int s) {
