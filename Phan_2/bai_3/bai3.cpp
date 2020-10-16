@@ -23,14 +23,8 @@ public:
 
     // hàm xuất
     friend ostream &operator<<(ostream &out, PhanSo P) {
-        out << (P.ts/P.gcd(P.ts,P.ms)) << "/" << (P.ms/P.gcd(P.ts,P.ms)) << endl;
+        out << P.ts << "/" << P.ms << endl;
         return out;
-    }
-
-    // hàm UCLN - O(log(n))
-    int gcd(int a, int b) {
-        if (a == 0) return b;
-        return gcd(b%a, a);
     }
 
     // hàm cộng
@@ -39,8 +33,6 @@ public:
         c.ts = ts*b.ms + b.ts*ms;
         c.ms = ms*b.ms;
 
-        c.ts = c.ts/gcd(c.ts,c.ms);
-        c.ms = c.ms/gcd(c.ts,c.ms);
         return c;
     }
 
@@ -50,8 +42,6 @@ public:
         c.ts = ts*b.ms - b.ts*ms;
         c.ms = ms*b.ms;
 
-        c.ts = c.ts/gcd(c.ts,c.ms);
-        c.ms = c.ms/gcd(c.ts,c.ms);
         return c;
     }
 
@@ -61,8 +51,6 @@ public:
         c.ts = ts*b.ts;
         c.ms = ms*b.ms;
 
-        c.ts = c.ts/gcd(c.ts,c.ms);
-        c.ms = c.ms/gcd(c.ts,c.ms);
         return c;
     }
 
@@ -72,8 +60,6 @@ public:
         c.ts = ts*b.ms;
         c.ms = ms*b.ts;
 
-        c.ts = c.ts/gcd(c.ts,c.ms);
-        c.ms = c.ms/gcd(c.ts,c.ms);
         return c;
     }
 };
@@ -84,13 +70,13 @@ int main() {
     cout << "phan so a: " << a << endl;
     cout << "phan so b: " << b << endl;
 
-    PhanSo c;
-    c = a+b;
-    cout << "a+b: " << c  << endl;
-    c = a-b;
-    cout << "a-b: " << c  << endl;
-    c = a*b;
-    cout << "a*b: " << c  << endl;
-    c = a/b;
-    cout << "a/b: " << c  << endl;
+    PhanSo c1,c2,c3,c4;
+    c1 = a+b;
+    cout << "a+b: " << c1  << endl;
+    c2 = a-b;
+    cout << "a-b: " << c2 << endl;
+    c3 = a*b;
+    cout << "a*b: " << c3 << endl;
+    c4 = a/b;
+    cout << "a/b: " << c4 << endl;
 }
