@@ -80,7 +80,7 @@ public:
 
 int main() {
     PhanSo a,b;
-    cin >> a >> b;
+    cin >> a;cin>>b;
     cout << "phan so a: " << a << endl;
     cout << "phan so b: " << b << endl;
 
